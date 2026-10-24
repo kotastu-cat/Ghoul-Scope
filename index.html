@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10131a">
+<meta name="description" content="L東京喰種の実戦カウンター。小役・CZ・AT・状態別当選率を記録し、公開解析値と比較する設定推測サポートツール。">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>SLOT SCOPE｜東京喰種 設定推測</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0e13;--panel:#151a23;--panel2:#1b222e;--line:#2a3342;--text:#f2f5fb;--muted:#9ba7ba;--cyan:#61e4d3;--pink:#ff568a;--amber:#ffca6a;--blue:#82aaff;--green:#72e2a8;--red:#ff7884;--radius:18px;--safe-b:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;background:radial-gradient(90% 40% at 50% 0%,#192637 0%,var(--bg) 75%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.5;padding-bottom:calc(78px + var(--safe-b))}button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}.app{max-width:880px;margin:auto;padding:0 14px}.top{padding:24px 2px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:11px}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,var(--pink),#824cff 65%,var(--cyan));display:grid;place-items:center;font-weight:950;font-size:17px;color:#10131a;box-shadow:0 8px 28px #824cff33}.eyebrow{font-size:10px;letter-spacing:.2em;color:var(--cyan);font-weight:900}.brand h1{margin:1px 0 0;font-size:20px;letter-spacing:.02em}.brand small{font-size:11px;color:var(--muted);display:block;margin-top:1px}.top-actions{display:flex;gap:7px}.btn{border:1px solid var(--line);background:var(--panel2);border-radius:12px;padding:10px 12px;font-weight:750;font-size:12px}.btn.primary{background:var(--cyan);color:#081411;border-color:var(--cyan)}.btn.danger{color:#ffb4bd;border-color:#71333d;background:#28181e}.btn.small{padding:7px 9px;font-size:11px;border-radius:9px}.session-strip{border:1px solid var(--line);background:linear-gradient(115deg,#18212d,#151922);padding:13px;border-radius:var(--radius);display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}.field label{display:block;color:var(--muted);font-size:10px;font-weight:800;margin:0 0 5px 2px;letter-spacing:.06em}.field input,.field select,.field textarea{background:#0c1118;border:1px solid #2b3545;border-radius:10px;color:var(--text);width:100%;padding:10px 11px;min-height:41px}.field textarea{resize:vertical;min-height:70px}.session-head{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center}.session-head strong{font-size:12px}.status-pill{font-size:10px;border-radius:999px;padding:4px 8px;background:#17352f;color:var(--cyan);border:1px solid #28564c;font-weight:800}.tabs{display:flex;gap:6px;position:sticky;top:0;z-index:4;padding:7px 0 12px;background:#0b0e13eF;backdrop-filter:blur(15px)}.tab{flex:1;border:1px solid transparent;background:transparent;color:var(--muted);padding:11px 7px;border-radius:12px;font-weight:800;font-size:12px}.tab.active{background:var(--panel2);border-color:#364356;color:var(--cyan)}.panel{display:none}.panel.active{display:block}.hero{border:1px solid #354254;border-radius:var(--radius);background:linear-gradient(125deg,#202a39,#131922 70%);padding:17px;margin-bottom:13px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-65px;top:-65px;border:1px solid #61e4d326;box-shadow:0 0 0 16px #61e4d30b,0 0 0 34px #61e4d308;pointer-events:none}.hero-top{display:flex;justify-content:space-between;align-items:start;gap:10px}.kicker{font-size:10px;color:var(--cyan);letter-spacing:.12em;font-weight:900}.hero h2{font-size:17px;margin:4px 0}.hero p{margin:4px 0 0;color:var(--muted);font-size:11px}.g-count{margin-top:14px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}.g-number{font-size:34px;letter-spacing:-.04em;font-weight:900;font-variant-numeric:tabular-nums}.g-number small{font-size:11px;color:var(--muted);letter-spacing:0;font-weight:700}.stepper{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}.step-btn{border:1px solid #344154;border-radius:10px;background:#111721;min-width:38px;height:38px;font-weight:900;font-size:15px}.step-btn.plus{color:var(--cyan);border-color:#31665e;background:#142a29}.step-btn.minus{color:var(--pink)}.step-btn.wide{font-size:11px;min-width:43px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 2px 9px}.section-head h3{font-size:13px;margin:0;letter-spacing:.02em}.section-head span{font-size:10px;color:var(--muted)}.counter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.counter{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:12px;min-width:0}.counter-head{display:flex;align-items:start;justify-content:space-between;gap:6px}.counter-name{font-size:12px;font-weight:850}.counter-note{font-size:10px;color:var(--muted);margin-top:3px}.counter-value{display:flex;align-items:baseline;gap:4px;margin:10px 0 9px}.count-number{background:transparent;border:0;padding:0;color:var(--text);font-size:28px;line-height:1;font-weight:900;letter-spacing:-.04em;font-variant-numeric:tabular-nums}.count-number:active{color:var(--cyan)}.unit{color:var(--muted);font-size:10px}.counter-controls{display:flex;gap:7px}.counter-controls button{height:37px;flex:1;border-radius:10px;border:1px solid var(--line);background:#202938;font-size:17px;font-weight:900}.counter-controls .dec{color:var(--pink);max-width:55px}.counter-controls .inc{color:var(--cyan)}.mini-stat{margin-top:8px;border-top:1px solid #293343;padding-top:8px;font-size:10px;color:var(--muted);min-height:22px}.mini-stat b{color:var(--text);font-variant-numeric:tabular-nums}.subpanel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:13px;margin-bottom:10px}.subpanel h3{margin:0 0 5px;font-size:13px}.subpanel p.desc{margin:0 0 12px;color:var(--muted);font-size:11px}.paired-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.eventrow{display:flex;gap:7px;align-items:center;margin-top:8px}.eventrow select,.eventrow input{flex:1;min-width:0}.blank{padding:32px 16px;border:1px dashed #394456;color:var(--muted);text-align:center;border-radius:16px}.decision{padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--panel);margin-bottom:12px}.decision .result{font-size:18px;font-weight:900;margin:5px 0}.decision .detail{font-size:11px;color:var(--muted)}.score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:13px}.score-tile{background:#0e131b;border:1px solid var(--line);border-radius:12px;padding:10px}.score-tile .setting{font-size:10px;color:var(--muted)}.score-tile strong{display:block;font-size:19px;margin:2px 0;font-variant-numeric:tabular-nums}.bar{height:5px;border-radius:99px;background:#283241;overflow:hidden;margin-top:7px}.bar i{height:100%;display:block;border-radius:99px;background:linear-gradient(90deg,var(--cyan),#889dff)}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin:10px 0 14px}.compare-table{width:100%;border-collapse:collapse;min-width:620px;font-variant-numeric:tabular-nums}.compare-table th,.compare-table td{padding:10px 8px;text-align:center;border-bottom:1px solid #28313e;font-size:11px;white-space:nowrap}.compare-table th{background:#1c2430;color:var(--muted);font-size:10px}.compare-table th:first-child,.compare-table td:first-child{text-align:left;position:sticky;left:0;background:#151a23;z-index:1;min-width:150px}.compare-table tr:last-child td{border-bottom:0}.compare-table .current{color:var(--cyan);font-weight:900}.compare-table .near{background:#1d3632}.caption{font-size:10px;color:var(--muted);margin:8px 2px 13px}.tag{display:inline-block;padding:3px 7px;border:1px solid var(--line);border-radius:7px;color:var(--muted);font-size:9px;margin-top:4px}.tag.good{border-color:#285c4d;background:#142a26;color:var(--green)}.tag.warn{border-color:#69532b;background:#2d2516;color:var(--amber)}.tag.bad{border-color:#71333d;background:#28181e;color:#ff9ca7}.notes-list{display:grid;gap:8px}.note-card,.history-card{border:1px solid var(--line);background:var(--panel);padding:12px;border-radius:14px}.note-top,.history-top{display:flex;justify-content:space-between;align-items:start;gap:9px}.note-card p,.history-card p{margin:5px 0 0;color:var(--muted);font-size:11px;white-space:pre-wrap;overflow-wrap:anywhere}.history-card strong{font-size:13px}.history-metrics{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.history-metrics span{padding:4px 7px;background:#0d1219;border:1px solid var(--line);border-radius:7px;color:var(--muted);font-size:10px}.muted{color:var(--muted)}.warning{border-left:3px solid var(--amber);padding:9px 11px;background:#2a2418;border-radius:0 9px 9px 0;color:#d8c7a3;font-size:11px;margin:10px 0}.source-list{padding-left:18px;margin:8px 0}.source-list li{margin:7px 0;font-size:11px;color:var(--muted)}a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}.bottom-nav{position:fixed;z-index:8;bottom:0;left:0;right:0;background:#11151dee;border-top:1px solid #28313e;backdrop-filter:blur(18px);padding:8px 14px calc(8px + var(--safe-b));display:flex;justify-content:center}.bottom-inner{max-width:880px;width:100%;display:flex;gap:7px}.bottom-nav .tab{padding:9px 6px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px}.navicon{font-size:18px;line-height:1}.footer{color:#657185;font-size:10px;text-align:center;padding:20px 0 12px}.modal-backdrop{position:fixed;inset:0;background:#05070bd9;z-index:20;display:none;align-items:center;justify-content:center;padding:18px}.modal-backdrop.open{display:flex}.modal{width:min(100%,420px);background:#1a202b;border:1px solid #394455;border-radius:20px;padding:17px;box-shadow:0 20px 70px #0009}.modal h3{margin:0 0 5px;font-size:16px}.modal p{margin:0 0 12px;font-size:11px;color:var(--muted)}.modal input{font-size:22px;font-weight:900;text-align:center;width:100%;background:#0b0f15;color:var(--text);border:1px solid #3d4b5e;border-radius:12px;padding:13px}.modal-actions{display:flex;gap:8px;margin-top:13px}.modal-actions button{flex:1}.hidden{display:none!important}.source-head{font-size:12px;font-weight:900;margin:17px 0 6px}.tiny{font-size:10px;color:var(--muted)}
+@media(min-width:660px){.counter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.session-strip{grid-template-columns:1fr 1fr 1fr 1fr}.session-head{grid-column:1/-1}.top{padding-top:30px}.hero{padding:21px}.score-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media(max-width:380px){.app{padding:0 10px}.brand h1{font-size:18px}.top-actions .btn{padding:8px;font-size:11px}.counter{padding:10px}.counter-name{font-size:11px}.count-number{font-size:25px}.stepper{max-width:150px}.g-number{font-size:29px}.session-strip{padding:10px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><div class="logo">SS</div><div><div class="eyebrow">SLOT SCOPE / FIELD TOOL</div><h1>設定推測カウンター</h1><small>L 東京喰種｜実戦値 × 公開解析</small></div></div>
+    <div class="top-actions"><button class="btn small" id="exportTop">書き出し</button><button class="btn small primary" id="newTop">＋ 新しい台</button></div>
+  </header>
+
+  <section class="session-strip">
+    <div class="session-head"><strong>現在の実戦データ</strong><span class="status-pill" id="autosaveStatus">端末内に自動保存</span></div>
+    <div class="field"><label for="storeName">ホール名（任意）</label><input id="storeName" data-meta="store" placeholder="例：○○店" autocomplete="off"></div>
+    <div class="field"><label for="machineNo">台番号</label><input id="machineNo" data-meta="number" placeholder="例：512" inputmode="numeric"></div>
+    <div class="field"><label for="sessionDate">実戦日</label><input id="sessionDate" data-meta="date" type="date"></div>
+    <div class="field"><label for="sessionMemo">メモ</label><input id="sessionMemo" data-meta="memo" placeholder="例：特日・角台"></div>
+  </section>
+
+  <nav class="tabs" aria-label="メインメニュー">
+    <button class="tab active" data-tab="record">🎮 記録</button>
+    <button class="tab" data-tab="compare">📊 解析比較</button>
+    <button class="tab" data-tab="history">💾 履歴・示唆</button>
+  </nav>
+
+  <main>
+    <section class="panel active" id="panel-record">
+      <div class="hero">
+        <div class="hero-top"><div><div class="kicker">PLAY DATA</div><h2>通常時ゲーム数</h2><p>設定差のある確率を比較するための分母。通常時G数を入力・更新しよう。</p></div><span class="tag">タップで直接入力</span></div>
+        <div class="g-count"><div><div class="g-number"><button class="count-number" data-edit="games" id="gamesDisplay">0</button> <small>G</small></div><div class="tiny" id="gamesHint">現在のセッション</div></div><div class="stepper"><button class="step-btn minus" data-action="inc" data-key="games" data-delta="-10">−10</button><button class="step-btn minus" data-action="inc" data-key="games" data-delta="-1">−</button><button class="step-btn plus" data-action="inc" data-key="games" data-delta="1">＋</button><button class="step-btn plus wide" data-action="inc" data-key="games" data-delta="10">＋10</button></div></div>
+      </div>
+
+      <div class="section-head"><h3>小役・赫眼</h3><span>数値タップで直接入力</span></div>
+      <div class="counter-grid" id="counter-small"></div>
+
+      <div class="section-head"><h3>CZ・AT・設定差要素</h3><span>実績回数を記録</span></div>
+      <div class="counter-grid" id="counter-main"></div>
+
+      <div class="section-head"><h3>状態別当選率</h3><span>状態が分かる場合だけ記録</span></div>
+      <div class="subpanel"><h3>弱チェリー → CZ以上</h3><p class="desc">小役成立回数と、そのうち当選した回数を記録。内部状態が不明な場合は無理に分類しない。</p><div class="paired-grid" id="state-weak"></div></div>
+      <div class="subpanel"><h3>超高確（精神世界）中のスイカ → CZ以上</h3><p class="desc">超高確中に成立したスイカだけを分母にする。</p><div class="paired-grid" id="state-watermelon"></div></div>
+      <div class="subpanel"><h3>赫眼の継続ゲーム数</h3><p class="desc">継続G数の振り分け自体は全設定共通。記録用で、設定推測スコアには加算しない。</p><div class="counter-grid" id="counter-kakugan"></div></div>
+
+      <div class="section-head"><h3>設定示唆・気づき</h3><span>忘れないうちに記録</span></div>
+      <div class="subpanel">
+        <div class="paired-grid">
+          <div class="field"><label for="signalType">演出・示唆の種類</label><select id="signalType"><option>AT終了画面</option><option>CZ終了エンドカード</option><option>ナミちゃんトロフィー</option><option>月山の招待状</option><option>獲得枚数表示</option><option>その他の設定示唆</option></select></div>
+          <div class="field"><label for="signalDetail">内容・色・示唆</label><input id="signalDetail" placeholder="例：金枠、設定4以上など"></div>
+        </div>
+        <div class="eventrow"><button class="btn primary" id="addSignal">＋ 示唆を記録</button><span class="tiny">演出名・示唆内容をメモとして保存</span></div>
+        <div class="field" style="margin-top:12px"><label for="confirmedMin">確定情報がある場合の最低設定</label><select id="confirmedMin" data-meta="confirmedMin"><option value="1">未確認（制限なし）</option><option value="2">設定2以上確定</option><option value="3">設定3以上確定</option><option value="4">設定4以上確定</option><option value="5">設定5以上確定</option><option value="6">設定6確定</option></select></div>
+        <div class="warning">「高設定示唆」と「設定確定」は別物。確定演出と断言できる根拠がある場合だけ、最低設定を設定してね。</div>
+        <div class="notes-list" id="signalList"></div>
+      </div>
+      <div class="eventrow"><button class="btn" id="saveSession">💾 この台を履歴に保存</button><button class="btn danger" id="resetCounts">カウントをリセット</button></div>
+    </section>
+
+    <section class="panel" id="panel-compare">
+      <div class="hero"><div class="kicker">LIVE ANALYSIS</div><h2>実戦値 × 公開解析値</h2><p>数値は入力のたびに更新。設定推測は確定判定ではなく、続行・撤退を考えるための参考情報。</p></div>
+      <div class="decision" id="decisionPanel"></div>
+      <div class="section-head"><h3>設定1〜6との相対的な整合度</h3><span>確率そのものではありません</span></div>
+      <div class="score-grid" id="scoreGrid"></div>
+      <p class="caption" id="scoreCaption"></p>
+      <div class="section-head"><h3>主要項目の比較</h3><span>実戦値／設定別解析値</span></div>
+      <div class="table-wrap"><table class="compare-table" id="compareTable"></table></div>
+      <p class="caption">確率表記は「1/N」。実戦値はカウント回数と通常時G数などから算出。確率が解析値に近いだけで設定が確定するわけではない。</p>
+      <div class="section-head"><h3>補助指標</h3><span>設定差はあるがサンプルに注意</span></div>
+      <div class="table-wrap"><table class="compare-table" id="supportTable"></table></div>
+      <div class="warning">相対整合度は、入力値と公開解析値を簡易モデルで照合した目安。指標間の相関、モード推測違い、解析値の誤差を完全には補正していないため、「設定○の確率」とは解釈しないでね。</div>
+      <div class="source-head">解析値の出典</div>
+      <ul class="source-list"><li><a href="https://pacnk.com/slot/tools/sh_tokyoguru.html" target="_blank" rel="noopener">Pachi-nk｜L東京喰種 設定推測ツール・詳細解析値</a>（設定差項目・各設定の確率）</li><li><a href="https://nana-press.com/kaiseki/machine/889/27256/" target="_blank" rel="noopener">なな徹｜赫眼状態・下段リプレイ・継続G数</a></li><li><a href="https://psmaga.com/e/pachi/pla/s_conq/nanashow_slot/16/kr02.php" target="_blank" rel="noopener">PSマガ｜設定推測ポイント</a>（100G以内当選・引き戻し等）</li></ul>
+      <p class="caption">公開されている二次資料を参照。メーカー一次資料で確認できていない項目も含む。アプリ内の数値は参考用で、掲載元の更新により変わる場合がある。最終確認：2026-10-24。</p>
+    </section>
+
+    <section class="panel" id="panel-history">
+      <div class="hero"><div class="kicker">SESSION ARCHIVE</div><h2>履歴・データ管理</h2><p>台ごとに記録を保存。データはこの端末のブラウザ内に保存され、サーバーには送信されない。</p></div>
+      <div class="subpanel"><h3>バックアップ／引き継ぎ</h3><p class="desc">ブラウザのデータ消去や端末変更に備えて、JSONを定期的に書き出しておくのがおすすめ。</p><div class="eventrow"><button class="btn primary" id="exportAll">データを書き出す（JSON）</button><button class="btn" id="importBtn">バックアップを読み込む</button><input type="file" id="importFile" accept="application/json,.json" class="hidden"></div><p id="backupStatus" class="tiny"></p></div>
+      <div class="section-head"><h3>保存済みの実戦</h3><span id="historyCount">0件</span></div>
+      <div id="historyList" class="notes-list"></div>
+      <div class="section-head"><h3>アプリについて</h3></div>
+      <div class="subpanel"><h3>使い方</h3><p class="desc">① 記録タブで通常時G数・小役・当選数を入力 → ② 解析比較タブで数値と整合度を見る → ③ 台を離れる前に履歴へ保存。数値はタップすると直接編集できる。</p><p class="desc">Safariからホーム画面へ追加して使う場合は、HTTPSで公開されたWebアプリのURLを開いて「共有」→「ホーム画面に追加」。ファイルを直接開いた場合は、ブラウザの制約によりインストール・オフライン動作が異なる場合がある。</p></div>
+    </section>
+  </main>
+  <footer class="footer">SLOT SCOPE · Personal field tool · データは端末内に保存</footer>
+</div>
+<div class="bottom-nav"><div class="bottom-inner"><button class="tab active" data-tab="record"><span class="navicon">🎮</span>記録</button><button class="tab" data-tab="compare"><span class="navicon">📊</span>解析比較</button><button class="tab" data-tab="history"><span class="navicon">💾</span>履歴・示唆</button></div></div>
+<div class="modal-backdrop" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editTitle"><div class="modal"><h3 id="editTitle">数値を編集</h3><p id="editDesc">数値を入力して保存。</p><input id="editInput" type="number" inputmode="numeric" min="0" step="1"><div class="modal-actions"><button class="btn" id="cancelEdit">キャンセル</button><button class="btn primary" id="saveEdit">保存する</button></div></div></div>
+<script>
+(() => {
+'use strict';
+const STORE_KEY='slotScopeTokyoGhoul_v1';
+const SETTINGS=[1,2,3,4,5,6];
+const RATE={
+  atInitial:[394.4,380.5,357.0,325.9,291.2,261.3],
+  czTotal:[262.6,255.6,246.5,233.1,216.4,203.7],
+  reminiscence:[300.5,295.1,287.6,276.7,262.7,251.2],
+  rize:[2079.1,1906.5,1722.8,1478.9,1226.6,1074.9],
+  episode:[6620.2,5879.7,5114.5,4062.5,3166.7,2639.5],
+  directAt:[28460.6,24453.5,18093.0,12019.5,8615.4,7036.8],
+  lowerReplay:[1260.3,1213.6,1170.3,1129.9,1092.3,1024.0],
+  atReturn:[7.81,7.81,9.38,10.94,12.50,15.23],
+  uraAt:[1.10,1.32,1.63,2.19,2.85,3.32],
+  weakNormal:[0.27,0.29,0.31,0.33,0.38,0.43],
+  weakHigh:[0.59,0.63,0.69,0.73,0.83,0.95],
+  weakUltra:[40.3,43.8,47.2,50.7,56.4,64.4],
+  watermelonUltra:[13.7,15.0,16.0,17.2,19.4,22.0],
+  hit100:[19.58,21.04,23.15,26.37,31.96,36.01]
+};
+const META={
+  store:'',number:'',date:new Date().toLocaleDateString('sv-SE'),memo:'',confirmedMin:1
+};
+const ZERO={games:0,weakCherry:0,watermelon:0,lowerReplay:0,kokugan10:0,kokugan20:0,kokugan30:0,kokugan50:0,czTotal:0,reminiscence:0,rize:0,atInitial:0,episode:0,directAt:0,atEnd:0,atReturn:0,blocks100:0,hit100:0,uraEligible:0,uraAt:0,weakNormalTrials:0,weakNormalHits:0,weakHighTrials:0,weakHighHits:0,weakUltraTrials:0,weakUltraHits:0,watermelonUltraTrials:0,watermelonUltraHits:0};
+const SMALL=[
+ {key:'weakCherry',name:'弱チェリー',note:'小役頻度の参考データ',unit:'回',freq:true},
+ {key:'watermelon',name:'スイカ',note:'小役頻度の参考データ',unit:'回',freq:true},
+ {key:'lowerReplay',name:'下段リプレイ',note:'設定差あり：赫眼の契機',unit:'回',freq:true,scored:true},
+];
+const MAIN=[
+ {key:'czTotal',name:'CZ合算',note:'レミニセンス＋大喰いの利世',unit:'回',freq:true,scored:true},
+ {key:'atInitial',name:'AT初当たり',note:'通常時G数 ÷ 初当たり',unit:'回',freq:true,scored:true},
+ {key:'reminiscence',name:'レミニセンス',note:'CZ内訳・補助指標',unit:'回',freq:true},
+ {key:'rize',name:'大喰いの利世',note:'上位CZ・補助指標',unit:'回',freq:true},
+ {key:'episode',name:'エピソードボーナス',note:'出現率に設定差あり',unit:'回',freq:true},
+ {key:'directAt',name:'AT直撃',note:'リプレイからのAT直撃・解析値基準',unit:'回',freq:true},
+ {key:'atEnd',name:'AT終了回数',note:'引き戻し率の分母',unit:'回'},
+ {key:'atReturn',name:'AT引き戻し',note:'AT終了後の引き戻し回数',unit:'回',ratioKey:'atEnd',scored:true},
+ {key:'uraEligible',name:'有馬J非経由AT',note:'裏AT率の分母',unit:'回'},
+ {key:'uraAt',name:'裏AT（対象分）',note:'有馬J非経由からの突入',unit:'回',ratioKey:'uraEligible'},
+ {key:'blocks100',name:'100G評価区間',note:'解析の集計定義に合わせて記録',unit:'区間'},
+ {key:'hit100',name:'100G以内CZ以上',note:'該当区間での当選回数',unit:'回',ratioKey:'blocks100'},
+];
+const KAKUGAN=[{key:'kokugan10',name:'10G',unit:'回'},{key:'kokugan20',name:'20G',unit:'回'},{key:'kokugan30',name:'30G',unit:'回'},{key:'kokugan50',name:'50G',unit:'回'}];
+const STATE_WEAK=[
+ {key:'weakNormal',label:'通常滞在',trials:'weakNormalTrials',hits:'weakNormalHits',rates:RATE.weakNormal},
+ {key:'weakHigh',label:'高確滞在',trials:'weakHighTrials',hits:'weakHighHits',rates:RATE.weakHigh},
+ {key:'weakUltra',label:'超高確（精神世界）',trials:'weakUltraTrials',hits:'weakUltraHits',rates:RATE.weakUltra}
+];
+let state=loadState(); let activeTab='record'; let editingKey=null;
+function freshSession(){return {id:uid(),created:new Date().toISOString(),meta:{...META},data:{...ZERO},signals:[]}}
+function uid(){return 's'+Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function loadState(){try{const s=JSON.parse(localStorage.getItem(STORE_KEY)||'{}');if(s.current&&s.current.data)return {current:normalize(s.current),history:Array.isArray(s.history)?s.history.map(normalize):[]}}catch(e){}return {current:freshSession(),history:[]}}
+function normalize(s){return {id:s.id||uid(),created:s.created||new Date().toISOString(),meta:{...META,...(s.meta||{})},data:{...ZERO,...(s.data||{})},signals:Array.isArray(s.signals)?s.signals:[]}}
+function persist(){try{localStorage.setItem(STORE_KEY,JSON.stringify(state));const el=document.getElementById('autosaveStatus');if(el)el.textContent='端末内に自動保存済み'}catch(e){const el=document.getElementById('autosaveStatus');if(el)el.textContent='保存できません（書き出し推奨）'}}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function val(k){return Math.max(0,Math.floor(Number(state.current.data[k])||0))}
+function setVal(k,v){state.current.data[k]=Math.max(0,Math.floor(Number(v)||0));renderAll();persist()}
+function inc(k,d){setVal(k,val(k)+Number(d))}
+function ratio(n,d){return d>0?n/d:null}
+function fmt(n,d=1){return Number(n).toLocaleString('ja-JP',{maximumFractionDigits:d,minimumFractionDigits:0})}
+function freq(n,d){return n>0&&d>0?`1/${fmt(d/n,1)}`:'—'}
+function pct(n,d){return d>0?`${fmt(n/d*100,1)}%`:'—'}
+function metricCard(m){const v=val(m.key);let stat='';if(m.freq)stat=`実戦値 <b>${freq(v,val('games'))}</b>`;else if(m.ratioKey)stat=`実戦率 <b>${pct(v,val(m.ratioKey))}</b>`;return `<article class="counter"><div class="counter-head"><div><div class="counter-name">${esc(m.name)}</div><div class="counter-note">${esc(m.note||'')}</div></div>${m.scored?'<span class="tag good">比較対象</span>':''}</div><div class="counter-value"><button class="count-number" data-edit="${m.key}" aria-label="${esc(m.name)}の数値を直接入力">${fmt(v,0)}</button><span class="unit">${esc(m.unit||'回')}</span></div><div class="counter-controls"><button class="dec" data-action="inc" data-key="${m.key}" data-delta="-1" aria-label="${esc(m.name)}を減らす">−</button><button class="inc" data-action="inc" data-key="${m.key}" data-delta="1" aria-label="${esc(m.name)}を増やす">＋</button></div><div class="mini-stat">${stat||'数値をカウント'}</div></article>`}
+function stateCard(s){let n=val(s.trials),h=val(s.hits);return `<div class="counter"><div class="counter-head"><div><div class="counter-name">${esc(s.label)}の弱チェリー</div><div class="counter-note">成立回数（分母）</div></div></div><div class="counter-value"><button class="count-number" data-edit="${s.trials}">${fmt(n,0)}</button><span class="unit">回</span></div><div class="counter-controls"><button class="dec" data-action="inc" data-key="${s.trials}" data-delta="-1">−</button><button class="inc" data-action="inc" data-key="${s.trials}" data-delta="1">＋</button></div><div class="mini-stat">CZ・エピボ当選回数</div><div class="counter-value" style="margin-top:8px"><button class="count-number" data-edit="${s.hits}">${fmt(h,0)}</button><span class="unit">回</span></div><div class="counter-controls"><button class="dec" data-action="inc" data-key="${s.hits}" data-delta="-1">−</button><button class="inc" data-action="inc" data-key="${s.hits}" data-delta="1">＋</button></div><div class="mini-stat">実戦当選率 <b>${pct(h,n)}</b> ／ 設定1 ${s.rates[0]}%・設定6 ${s.rates[5]}%</div></div>`}
+function watermelonStateCard(){let n=val('watermelonUltraTrials'),h=val('watermelonUltraHits');return `<div class="counter"><div class="counter-head"><div><div class="counter-name">超高確中のスイカ</div><div class="counter-note">超高確中のみカウント</div></div></div><div class="mini-stat">成立回数（分母）</div><div class="counter-value"><button class="count-number" data-edit="watermelonUltraTrials">${fmt(n,0)}</button><span class="unit">回</span></div><div class="counter-controls"><button class="dec" data-action="inc" data-key="watermelonUltraTrials" data-delta="-1">−</button><button class="inc" data-action="inc" data-key="watermelonUltraTrials" data-delta="1">＋</button></div><div class="mini-stat">CZ・エピボ当選回数</div><div class="counter-value" style="margin-top:8px"><button class="count-number" data-edit="watermelonUltraHits">${fmt(h,0)}</button><span class="unit">回</span></div><div class="counter-controls"><button class="dec" data-action="inc" data-key="watermelonUltraHits" data-delta="-1">−</button><button class="inc" data-action="inc" data-key="watermelonUltraHits" data-delta="1">＋</button></div><div class="mini-stat">実戦当選率 <b>${pct(h,n)}</b> ／ 設定1 ${RATE.watermelonUltra[0]}%・設定6 ${RATE.watermelonUltra[5]}%</div></div>`}
+function metaRender(){for(const el of document.querySelectorAll('[data-meta]')){const k=el.dataset.meta;const v=state.current.meta[k]??META[k]??'';if(el.value!==String(v))el.value=v}document.getElementById('gamesDisplay').textContent=fmt(val('games'),0);document.getElementById('gamesHint').textContent=`現在のセッション · ${state.current.meta.date||'日付未設定'}`}
+function renderCounters(){document.getElementById('counter-small').innerHTML=SMALL.map(metricCard).join('');document.getElementById('counter-main').innerHTML=MAIN.map(metricCard).join('');document.getElementById('state-weak').innerHTML=STATE_WEAK.map(stateCard).join('');document.getElementById('state-watermelon').innerHTML=watermelonStateCard();document.getElementById('counter-kakugan').innerHTML=KAKUGAN.map(metricCard).join('')}
+function poissonLL(x,exposure,freqv){if(exposure<=0||freqv<=0)return null;const mu=exposure/freqv;return x===0?-mu:x*Math.log(mu)-mu}
+function binomLL(x,n,pctv){if(n<=0)return null;const p=Math.max(1e-7,Math.min(1-1e-7,pctv/100));return x*Math.log(p)+(n-x)*Math.log(1-p)}
+function scoreModel(){const d=state.current.data,g=val('games');const metrics=[];function pois(key,label,arr,minGames){if(g>=minGames)metrics.push({key,label,kind:'poisson',x:val(key),n:g,values:arr.map(f=>poissonLL(val(key),g,f))})}function bin(keyX,keyN,label,arr,minN){const n=val(keyN),x=val(keyX);if(n>=minN&&x<=n)metrics.push({key:keyX,label,kind:'binomial',x,n,values:arr.map(p=>binomLL(x,n,p))})}
+  pois('czTotal','CZ合算',RATE.czTotal,300);pois('atInitial','AT初当たり',RATE.atInitial,500);pois('lowerReplay','下段リプレイ',RATE.lowerReplay,800);
+  bin('atReturn','atEnd','AT引き戻し',RATE.atReturn,8);
+  bin('weakNormalHits','weakNormalTrials','弱チェリー・通常時',RATE.weakNormal,10);
+  bin('weakHighHits','weakHighTrials','弱チェリー・高確',RATE.weakHigh,10);
+  bin('weakUltraHits','weakUltraTrials','弱チェリー・超高確',RATE.weakUltra,4);
+  bin('watermelonUltraHits','watermelonUltraTrials','スイカ・超高確',RATE.watermelonUltra,4);
+  // The 100G statistic is shown descriptively only: its published denominator depends on the source's collection definition.
+  if(!metrics.length){return {metrics,rel:SETTINGS.map(s=>({setting:s,raw:0,weight:0})),min:Number(state.current.meta.confirmedMin)||1}}
+  let score=SETTINGS.map(()=>0);for(const m of metrics)m.values.forEach((v,i)=>{score[i]+=v});const min=Number(state.current.meta.confirmedMin)||1;score=score.map((v,i)=>i+1<min?-Infinity:v);
+  const finite=score.filter(Number.isFinite);let rel=SETTINGS.map((s,i)=>({setting:s,raw:score[i],weight:0}));if(finite.length){const max=Math.max(...finite),ex=score.map(v=>Number.isFinite(v)?Math.exp(Math.max(-700,v-max)):0),sum=ex.reduce((a,b)=>a+b,0)||1;rel=rel.map((o,i)=>({...o,weight:ex[i]/sum*100}))}return {metrics,rel,min};}
+function decisionText(model){if(!model.metrics.length)return {title:'まだ判定材料が足りない',detail:'通常時G数や成立回数を入力すると、比較できる項目が増えるよ。弱チェリー・スイカの総出現率は記録できますが、信頼できる設定別確率が確認できていないため総合スコアには使っていません。',tag:'データ入力待ち'};const high=model.rel.filter(x=>x.setting>=4).reduce((a,x)=>a+x.weight,0);const low=model.rel.filter(x=>x.setting<=3).reduce((a,x)=>a+x.weight,0);const best=model.rel.reduce((a,b)=>a.weight>b.weight?a:b);let title='判断保留：材料が割れている';if(high>=65)title='高設定側の解析値と相対的に整合';else if(low>=65)title='低〜中間設定側の解析値と相対的に整合';const games=val('games');return {title,detail:`比較に使えた項目：${model.metrics.length}個／通常時 ${fmt(games,0)}G。単純モデル上で最も整合したのは設定${best.setting}（相対スコア ${fmt(best.weight,1)}%）。確定判定ではなく、他の示唆・ホール状況と合わせて判断。`,tag:`設定4〜6側 ${fmt(high,1)}% · 設定1〜3側 ${fmt(low,1)}%`}}
+function renderCompare(){const model=scoreModel(),d=state.current.data,g=val('games'),dt=decisionText(model);document.getElementById('decisionPanel').innerHTML=`<div class="kicker">CURRENT READ</div><div class="result">${esc(dt.title)}</div><div class="detail">${esc(dt.detail)}</div><div class="tag ${model.metrics.length?'warn':''}">${esc(dt.tag)}</div>`;
+ document.getElementById('scoreGrid').innerHTML=model.rel.map(o=>`<div class="score-tile"><div class="setting">設定 ${o.setting}${o.setting===Math.max(...model.rel.filter(x=>Number.isFinite(x.raw)).map(x=>x.setting))?' ':''}</div><strong>${Number.isFinite(o.raw)?fmt(o.weight,1)+'%':'—'}</strong><div class="bar"><i style="width:${Math.min(100,o.weight)}%"></i></div></div>`).join('');document.getElementById('scoreCaption').textContent=model.metrics.length?`スコアに使用：${model.metrics.map(m=>m.label).join('・')}。関連する指標の重なりがあるため、表示割合を設定の実確率とみなさないこと。`: '現在はスコアを算出できるだけのサンプルがありません。必要な分母・回数を入力してください。';
+ const rows=[
+ {label:'CZ合算',key:'czTotal',rates:RATE.czTotal,desc:'通常時G ÷ CZ合算回数'},
+ {label:'AT初当たり',key:'atInitial',rates:RATE.atInitial,desc:'通常時G ÷ AT初当たり回数'},
+ {label:'下段リプレイ',key:'lowerReplay',rates:RATE.lowerReplay,desc:'通常時G ÷ 下段リプレイ回数'},
+ {label:'レミニセンス',key:'reminiscence',rates:RATE.reminiscence,desc:'補助指標（CZ合算の内訳）'},
+ {label:'大喰いの利世',key:'rize',rates:RATE.rize,desc:'補助指標（CZ合算の内訳）'},
+ {label:'エピソードボーナス',key:'episode',rates:RATE.episode,desc:'補助指標（AT関連）'},
+ {label:'AT直撃',key:'directAt',rates:RATE.directAt,desc:'解析上の直撃確率との比較'},
+ ];
+ document.getElementById('compareTable').innerHTML=`<thead><tr><th>項目</th><th>実戦値</th>${SETTINGS.map(s=>`<th>設定${s}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>{const n=val(r.key),actual=n&&g?freq(n,g):'—';const exp=Number(actual.split('/')[1]);const nearest=r.rates.reduce((best,x,i)=>Math.abs(x-exp)<Math.abs(best.v-exp)?{i,v:x}:best,{i:0,v:r.rates[0]});return `<tr><td>${esc(r.label)}<div class="tiny">${esc(r.desc)}</div></td><td class="current">${actual}</td>${r.rates.map((f,i)=>`<td class="${n&&g&&nearest.i===i?'near':''}">1/${fmt(f,1)}</td>`).join('')}</tr>`}).join('')}</tbody>`;
+ const supports=[
+ {label:'AT引き戻し率',actual:pct(val('atReturn'),val('atEnd')),rates:RATE.atReturn.map(x=>`${fmt(x,2)}%`),hint:'引き戻し ÷ AT終了回数'},
+ {label:'裏AT（対象ATから）',actual:pct(val('uraAt'),val('uraEligible')),rates:RATE.uraAt.map(x=>`${fmt(x,2)}%`),hint:'有馬J非経由の対象ATのみ'},
+ {label:'通常時 弱チェリー→CZ',actual:pct(val('weakNormalHits'),val('weakNormalTrials')),rates:RATE.weakNormal.map(x=>`${fmt(x,2)}%`),hint:'通常滞在と確実に分かるケース'},
+ {label:'高確 弱チェリー→CZ',actual:pct(val('weakHighHits'),val('weakHighTrials')),rates:RATE.weakHigh.map(x=>`${fmt(x,2)}%`),hint:'高確滞在と確実に分かるケース'},
+ {label:'超高確 弱チェリー→CZ以上',actual:pct(val('weakUltraHits'),val('weakUltraTrials')),rates:RATE.weakUltra.map(x=>`${fmt(x,1)}%`),hint:'精神世界中のみ'},
+ {label:'超高確 スイカ→CZ以上',actual:pct(val('watermelonUltraHits'),val('watermelonUltraTrials')),rates:RATE.watermelonUltra.map(x=>`${fmt(x,1)}%`),hint:'精神世界中のみ'},
+ {label:'100G以内CZ以上',actual:pct(val('hit100'),val('blocks100')),rates:RATE.hit100.map(x=>`${fmt(x,2)}%`),hint:'分母の取り方を統一して比較'},
+ ];
+ document.getElementById('supportTable').innerHTML=`<thead><tr><th>項目</th><th>実戦値</th>${SETTINGS.map(s=>`<th>設定${s}</th>`).join('')}</tr></thead><tbody>${supports.map(r=>`<tr><td>${esc(r.label)}<div class="tiny">${esc(r.hint)}</div></td><td class="current">${r.actual}</td>${r.rates.map(t=>`<td>${t}</td>`).join('')}</tr>`).join('')}</tbody>`;
+}
+function renderSignals(){const list=document.getElementById('signalList');const a=state.current.signals||[];list.innerHTML=a.length?a.slice().reverse().map((s,i)=>`<div class="note-card"><div class="note-top"><div><strong>${esc(s.type)}</strong><p>${esc(s.detail||'内容メモなし')} · ${esc(s.time||'')}</p></div><button class="btn small danger" data-remove-signal="${a.length-1-i}">削除</button></div></div>`).join(''):'<div class="tiny" style="margin-top:10px">まだ示唆の記録はありません。</div>'}
+function renderHistory(){const h=state.history;document.getElementById('historyCount').textContent=`${h.length}件`;const el=document.getElementById('historyList');el.innerHTML=h.length?h.slice().reverse().map((s,ri)=>{const idx=h.length-1-ri;const m=s.meta,d=s.data;return `<article class="history-card"><div class="history-top"><div><strong>${esc(m.store||'ホール未入力')} ${m.number?'・'+esc(m.number)+'番台':''}</strong><p>${esc(m.date||'日付不明')} ${m.memo?' · '+esc(m.memo):''}</p></div><span class="tag">${fmt(d.games,0)}G</span></div><div class="history-metrics"><span>CZ ${fmt(d.czTotal,0)}回</span><span>AT ${fmt(d.atInitial,0)}回</span><span>弱チェ ${fmt(d.weakCherry,0)}回</span><span>下段リプレイ ${fmt(d.lowerReplay,0)}回</span></div><div class="eventrow"><button class="btn small primary" data-load-history="${idx}">このデータを開く</button><button class="btn small" data-export-one="${idx}">書き出し</button><button class="btn small danger" data-delete-history="${idx}">削除</button></div></article>`}).join(''):'<div class="blank">保存した実戦データはまだありません。<br>「この台を履歴に保存」で記録できるよ。</div>'}
+function renderAll(){metaRender();renderCounters();renderSignals();renderCompare();renderHistory()}
+function showTab(tab){activeTab=tab;document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===`panel-${tab}`));window.scrollTo({top:0,behavior:'smooth'})}
+function saveCurrentSession(){const copy=JSON.parse(JSON.stringify(state.current));copy.savedAt=new Date().toISOString();const at=state.history.findIndex(s=>s.id===copy.id);if(at>=0)state.history[at]=copy;else state.history.push(copy);persist();renderHistory();toast('この台のデータを履歴に保存したよ')}
+function newSession(){if(!confirm('現在の入力内容を残したまま、新しい台のカウントを始める？\n未保存データは履歴に自動追加されません。先に保存するのがおすすめ。'))return;state.current=freshSession();persist();renderAll();showTab('record')}
+function resetCounts(){if(!confirm('現在の台のカウントをすべて0に戻す？\nホール名・台番号・メモと示唆の記録は残ります。'))return;state.current.data={...ZERO};persist();renderAll()}
+function openEdit(key){editingKey=key;const n=val(key);const label=[...SMALL,...MAIN,...KAKUGAN].find(x=>x.key===key)?.name||({games:'通常時ゲーム数',weakNormalTrials:'通常時の弱チェリー成立',weakNormalHits:'通常時の弱チェリー当選',weakHighTrials:'高確中の弱チェリー成立',weakHighHits:'高確中の弱チェリー当選',weakUltraTrials:'超高確中の弱チェリー成立',weakUltraHits:'超高確中の弱チェリー当選',watermelonUltraTrials:'超高確中のスイカ成立',watermelonUltraHits:'超高確中のスイカ当選'}[key]||key);document.getElementById('editTitle').textContent=`${label}を直接入力`;document.getElementById('editDesc').textContent='数字を入力して保存。マイナス値は0として扱う。';document.getElementById('editInput').value=n;document.getElementById('editModal').classList.add('open');setTimeout(()=>{const i=document.getElementById('editInput');i.focus();i.select()},50)}
+function closeEdit(){document.getElementById('editModal').classList.remove('open');editingKey=null}
+function saveEdit(){if(!editingKey)return;setVal(editingKey,document.getElementById('editInput').value);closeEdit()}
+function toast(msg){const el=document.getElementById('autosaveStatus');el.textContent=msg;setTimeout(()=>{if(el)el.textContent='端末内に自動保存済み'},2300)}
+function exportJSON(content,name){const blob=new Blob([JSON.stringify(content,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+function datePart(){return (state.current.meta.date||new Date().toLocaleDateString('sv-SE')).replaceAll('-','')}
+function exportAll(){exportJSON({format:'slot-scope-backup',version:1,exportedAt:new Date().toISOString(),current:state.current,history:state.history},`slot-scope-backup-${datePart()}.json`);document.getElementById('backupStatus').textContent='バックアップを書き出しました。ファイルを安全な場所に保存してね。'}
+function addSignal(){const type=document.getElementById('signalType').value,detail=document.getElementById('signalDetail').value.trim();state.current.signals.push({type,detail,time:new Date().toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})});document.getElementById('signalDetail').value='';persist();renderSignals();toast('示唆を記録したよ')}
+function fmtHistoryOne(i){const s=state.history[i];if(!s)return;exportJSON(s,`slot-scope-${(s.meta.date||'session').replaceAll('-','')}-${s.meta.number||'no'}.json`)}
+// Counter actions and direct edit delegation.
+document.addEventListener('click',e=>{const tab=e.target.closest('[data-tab]');if(tab){showTab(tab.dataset.tab);return}const incBtn=e.target.closest('[data-action="inc"]');if(incBtn){inc(incBtn.dataset.key,Number(incBtn.dataset.delta));return}const edit=e.target.closest('[data-edit]');if(edit){openEdit(edit.dataset.edit);return}const rem=e.target.closest('[data-remove-signal]');if(rem){state.current.signals.splice(Number(rem.dataset.removeSignal),1);persist();renderSignals();return}const load=e.target.closest('[data-load-history]');if(load){const s=state.history[Number(load.dataset.loadHistory)];if(s){if(!confirm('保存済みのデータを現在の入力画面に読み込む？\n現在の入力内容は置き換わるよ。'))return;state.current=normalize(JSON.parse(JSON.stringify(s)));persist();renderAll();showTab('record')}return}const del=e.target.closest('[data-delete-history]');if(del){const i=Number(del.dataset.deleteHistory);if(confirm('この履歴を削除する？')){state.history.splice(i,1);persist();renderHistory()}return}const ex=e.target.closest('[data-export-one]');if(ex){fmtHistoryOne(Number(ex.dataset.exportOne));return}});
+document.querySelectorAll('[data-meta]').forEach(el=>{el.addEventListener('change',()=>{const k=el.dataset.meta;state.current.meta[k]=k==='confirmedMin'?Number(el.value):el.value;persist();renderCompare();renderHistory()})});
+document.getElementById('saveEdit').addEventListener('click',saveEdit);document.getElementById('cancelEdit').addEventListener('click',closeEdit);document.getElementById('editModal').addEventListener('click',e=>{if(e.target.id==='editModal')closeEdit()});document.getElementById('editInput').addEventListener('keydown',e=>{if(e.key==='Enter')saveEdit();if(e.key==='Escape')closeEdit()});document.getElementById('newTop').addEventListener('click',newSession);document.getElementById('saveSession').addEventListener('click',saveCurrentSession);document.getElementById('resetCounts').addEventListener('click',resetCounts);document.getElementById('addSignal').addEventListener('click',addSignal);document.getElementById('exportAll').addEventListener('click',exportAll);document.getElementById('exportTop').addEventListener('click',exportAll);document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importFile').click());document.getElementById('importFile').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{try{const p=JSON.parse(reader.result);if(p.format!=='slot-scope-backup'||!p.current)throw new Error('形式が違います');if(!confirm('バックアップを読み込む？\n現在の実戦データと履歴はバックアップの内容に置き換わります。'))return;state={current:normalize(p.current),history:Array.isArray(p.history)?p.history.map(normalize):[]};persist();renderAll();document.getElementById('backupStatus').textContent='バックアップを読み込みました。'}catch(err){alert('バックアップを読み込めませんでした。SLOT SCOPEのJSONファイルか確認してね。')}e.target.value=''};reader.readAsText(f)});
+// On load, establish a date for a blank session and render.
+if(!state.current.meta.date)state.current.meta.date=new Date().toLocaleDateString('sv-SE');persist();renderAll();
+if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+})();
+</script>
+</body>
+</html>

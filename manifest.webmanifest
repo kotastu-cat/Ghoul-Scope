@@ -1,0 +1,15 @@
+{
+  "name": "SLOT SCOPE｜東京喰種 設定推測カウンター",
+  "short_name": "SLOT SCOPE",
+  "description": "L東京喰種の実戦値と公開解析値を比較する設定推測サポートツール",
+  "lang": "ja-JP",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0e13",
+  "theme_color": "#10131a",
+  "icons": [
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}
